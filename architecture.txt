@@ -1,0 +1,38 @@
+Dialog Editor Architecture
+
+Dialog Template Parser Code
+In-Memory Data Model
+Graphical Code
+	Hit-testing code
+	Rendering code
+Graphical User Interface
+	Filesystem Interface
+	Language Interface
+
+
+The Data Model
+--------------
+
+This program maintains a binary form of the dialog template while it
+is being worked on.  For any text fields in the dialog template that
+Windows can only access up to 255 characters from, this program also
+limits such fields to 255 characters explicitly.  Also, there are two
+utility functions included, SetUnixNlChars() and GenWinNlChars(), that
+are used to assist between newline conversions.
+
+
+Other Commentary
+----------------
+
+The header "subwindef.h" remains in this program's source code due to
+a previous, but impossible, wish to make this program cross-platform.
+See README.txt for the explanation.
+
+Originally, this program was written as only two source code files:
+one for the dialog template parser and the rest was in dlgedit.c.
+However, I later broke that single file, which was small in comparison
+to bigger program's source code files, into several other files which
+are hopefully more reusable on there own.  This is intended to be a
+favor for you to not have to redo as much work as has already been
+done if you plan on writing a Windows application for obsolete Windows
+computers.

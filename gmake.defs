@@ -1,0 +1,51 @@
+# -*- Makefile -*- definitions for MinGW
+
+# The following variables are project-specific definitions
+TargetName = dlgedit
+OutName = dlgedit.exe
+# END project-specific definitions
+
+EMPTY =
+SPACE = $(EMPTY) $(EMPTY)
+
+CC = gcc
+CC_OUT = -o$(SPACE)
+LINK = gcc
+LINK_OUT = -o$(SPACE)
+RC = windres -O coff
+RC_OUT = -o$(SPACE)
+O = o
+
+# Testing configured variables needs a whitespace to work correctly
+ifdef NODEBUG
+OutDir = obj
+else
+OutDir = obj-dbg
+endif
+
+ifdef NOCYGWIN
+CC = gcc -mno-cygwin
+endif
+
+# Build flags for targets
+cflags = $(USER_CFLAGS) -c
+guiflags = $(USER_LDFLAGS)
+
+ifdef NODEBUG
+cdebug = -O3
+linkdebug =
+else
+cdebug = -g -Wall
+linkdebug =
+endif
+
+SUBSYSTEM_WINDOWS=-Wl,-subsystem,windows
+
+guilibs = -lkernel32 -luser32 -lgdi32 -lwinspool -lcomdlg32 -ladvapi32 -lshell32
+olelibs = -lole32 -loleaut32 -luuid -lodbc32 -lodbccp32
+
+ifdef NODEBUG
+POSTBUILD = strip $(OutDir)/$(OutName)
+else
+POSTBUILD =
+endif

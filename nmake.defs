@@ -1,0 +1,44 @@
+# -*- Makefile -*- defintions for MSVC
+
+# The following variables are project-specific definitions
+TargetName = dlgedit
+OutName = dlgedit.exe
+# END project-specific definitions
+
+CC = cl
+CC_OUT = -Fo
+LINK = link
+LINK_OUT = -out:
+RC = rc
+RC_OUT = -Fo
+O = obj
+
+!if "$(NODEBUG)" == "1"
+OutDir = Release
+!else
+OutDir = Debug
+!endif
+
+# Build flags for targets
+cflags = $(USER_CFLAGS) -D "_MBCS" -EHsc -W3 -nologo -c -TC # -Wp64
+p1guiflags = $(USER_LDFLAGS) -NOLOGO -MACHINE:X86
+!if "$(HAVE_MT)" == "1"
+guiflags = $(p1guiflags) -MANIFEST -MANIFESTFILE:"$(OutDir)/$(OutName).intermediate.manifest"
+mtflags = -nologo -outputresource:"$(OutDir)/$(OutName)"
+POSTBUILD = mt $(mtflags) -manifest "$(OutDir)/$(OutName).intermediate.manifest"
+!else
+guiflags = $(p1guiflags)
+!endif
+
+!if "$(NODEBUG)" == "1"
+cdebug = -Ox -MD # -GL
+linkdebug = -OPT:REF -OPT:ICF # -LTCG
+!else
+cdebug = -Od -D "_DEBUG" -D "_CRTDBG_MAP_ALLOC" -Fd"$(OutDir)/vc80.pdb" -Gm -MDd -ZI # -RTC1
+linkdebug = -DEBUG -PDB:"$(OutDir)/$(TargetName).pdb"
+!endif
+
+SUBSYSTEM_WINDOWS=-subsystem:windows
+
+guilibs = kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib
+olelibs = ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib

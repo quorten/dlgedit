@@ -1,0 +1,21 @@
+These features are unnecessary, but they are convenient:
+
+* Allow multiple selections and dragging multiple controls.  This is
+  not necessary, as it can be done by manual arithmetic with the text
+  window.
+
+* Provide push-buttons that perform alignment and spacing on the
+  current selection.  This is also unnecessary for the same reason
+  stated above.
+
+* Provide an in-program full dialog template text editor.  Currently,
+  the program only lets you edit either a single control at a time or
+  the dialog header.  However, you can simply open up the template in
+  an external editor, make the necessary changes, then reload the
+  template in the dialog editor, making this feature therefore
+  unnecessary.
+
+* Provide better WYSIWYG rendering support.
+
+* Provide an interface to graphically embed the Dialog Editor within
+  an Emacs session.

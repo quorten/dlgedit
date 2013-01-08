@@ -1,0 +1,18 @@
+There are some features that I may want to add in consideration to
+architecture.txt:
+
+* More "human" text messages.  Overly sparse textual information makes
+  the program seem like computers are emotionless, which they are, but
+  this does not make for a very good user experience.  Being more
+  informative and more verbose as appropriate would help, such as
+  saying the name of the current file in the application's title bar.
+
+* Saving the window position and text window font on exit and loading
+  it on start.
+
+* Break up LoadDialogTemplate() and SaveDialogTemplate() into their
+  proper modules.  Note that because LoadDialogTemplate() uses
+  platform dependent functions, it cannot be used in tmplparser.c, and
+  because SaveDialogTemplate() has a single line of code that changes
+  the state of the "fileChanged" variable, that would need a
+  bootstrapper function into the one function in tmplparser.c.

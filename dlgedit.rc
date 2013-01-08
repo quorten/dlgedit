@@ -1,0 +1,77 @@
+#include <windows.h>
+#include "resource.h"
+
+MAIN_FRAME ICON "dlgedit.ico"
+
+1 VERSIONINFO
+FILEVERSION		1,0,0,0
+PRODUCTVERSION	0,1,0,0
+/* For those who are interested, you should specify VS_FF_PRIVATEBUILD
+for file flags and the StringFileInfo block should contain a
+PrivateBuild string. */
+FILEFLAGSMASK		0
+FILEFLAGS		0
+FILEOS			VOS__WINDOWS32
+FILETYPE		VFT_APP
+FILESUBTYPE		VFT2_UNKNOWN
+{
+	BLOCK "StringFileInfo"
+	{
+		BLOCK "040904E4"
+		{
+			//VALUE "Comments"
+			VALUE "CompanyName", "Ehtex Hyphle"
+			VALUE "FileDescription", "Dialog Editor"
+			VALUE "FileVersion", "1.0.0.0"
+			VALUE "InternalName", "Dialog Editor"
+			VALUE "LegalCopyright", "Public Domain"
+			//VALUE "LegalTrademarks"
+			VALUE "OriginalFilename", "dlgedit.exe"
+			VALUE "ProductName", "Dialog Editor"
+			VALUE "ProductVersion", "1.0.0.0"
+		}
+	}
+	BLOCK "VarFileInfo"
+	{
+		VALUE "Translation", 0x0409, 1252
+	}
+}
+
+MAIN_FRAME MENU
+{
+	POPUP "&File"
+	{
+		MENUITEM "&New\tCtrl+N", M_NEW
+		MENUITEM "&Open\tCtrl+O", M_OPEN
+		MENUITEM "&Save\tCtrl+S", M_SAVE
+		MENUITEM "Save &As...", M_SAVEAS
+		MENUITEM SEPARATOR
+		MENUITEM "E&xit\tAlt+F4", M_EXIT
+	}
+	POPUP "&Edit"
+	{
+		MENUITEM "Apply &Text\tCtrl+W", M_PARSETEXT
+		MENUITEM "&Add Control\tCtrl+E", M_ADDCTRL
+		MENUITEM "&Delete Control\tDel", M_DELCTRL
+		MENUITEM "&Font...", M_FONT
+		MENUITEM "Text &Window", M_SHOW_T_WIN
+		MENUITEM "Text Window Font...", M_T_WIN_FONT
+	}
+	POPUP "&Help"
+	{
+		MENUITEM "&About Dialog Editor", M_ABOUT, HELP
+	}
+}
+
+MAIN_FRAME ACCELERATORS
+{
+	"N", M_NEW, VIRTKEY, CONTROL
+	"O", M_OPEN, VIRTKEY, CONTROL
+	"S", M_SAVE, VIRTKEY, CONTROL
+	"W", M_PARSETEXT, VIRTKEY, CONTROL
+	"E", M_ADDCTRL, VIRTKEY, CONTROL
+}
+
+NEW_TEMPLATE RCDATA "newdlg.dlg"
+
+#include "about.dlg"

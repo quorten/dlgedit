@@ -1,0 +1,72 @@
+# Master -*- makefile -*- for the dialog editor.
+
+VERSION = 0.1.1
+
+dlgedit_SOURCES = \
+	dlgedit.c dlgedit.h \
+	graphhit.c graphhit.h \
+	tmplparser.c tmplparser.h \
+	ufsys.c ufsys.h \
+	exparray.h \
+	xmalloc.c xmalloc.h \
+	subwindef.h \
+	resource.h dlgedit.rc dlgedit.ico about.dlg newdlg.dlg
+
+DISTFILES = $(dlgedit_SOURCES) \
+	README.txt INSTALL.txt architecture.txt TODO.txt Wishlist.txt \
+	configure.bat COPYING-CONF makefile.w32-in gmake.defs nmake.defs \
+	exparray.gdb
+
+objs = $(OutDir)/dlgedit.$(O) $(OutDir)/tmplparser.$(O) \
+	$(OutDir)/graphhit.$(O) $(OutDir)/ufsys.$(O) \
+	$(OutDir)/xmalloc.$(O) $(OutDir)/dlgedit.res
+
+all: $(OutDir) $(OutDir)/dlgedit.exe
+
+# Specify header dependencies
+# tmplparser.h: tmplparser.h exparray.h subwindef.h
+
+$(OutDir)/dlgedit.$(O): dlgedit.c resource.h tmplparser.h xmalloc.h
+	$(CC) $(cdebug) $(cflags) $(cvars) dlgedit.c $(CC_OUT)$@
+
+$(OutDir)/tmplparser.$(O): tmplparser.c exparray.h tmplparser.h xmalloc.h
+	$(CC) $(cdebug) $(cflags) $(cvars) tmplparser.c $(CC_OUT)$@
+
+$(OutDir)/graphhit.$(O): graphhit.c dlgedit.h tmplparser.h ufsys.h graphhit.h
+	$(CC) $(cdebug) $(cflags) $(cvars) graphhit.c $(CC_OUT)$@
+
+$(OutDir)/ufsys.$(O): ufsys.c dlgedit.h
+	$(CC) $(cdebug) $(cflags) $(cvars) ufsys.c $(CC_OUT)$@
+
+$(OutDir)/xmalloc.$(O): xmalloc.c
+	$(CC) $(cdebug) $(cflags) $(cvars) xmalloc.c $(CC_OUT)$@
+
+$(OutDir)/dlgedit.res: dlgedit.rc resource.h dlgedit.ico newdlg.dlg about.dlg
+	$(RC) $(RC_OUT)$@ dlgedit.rc
+
+$(OutDir)/dlgedit.exe: $(objs)
+	$(LINK) $(LINK_OUT)$@ $(SUBSYSTEM_WINDOWS) \
+	$(linkdebug) $(guiflags) $(objs) $(guilibs)
+	$(POSTBUILD)
+
+$(OutDir):
+#	if [ ! -d $(OutDir) ]; then mkdir $(OutDir); fi
+#	if not exist $(OutDir) mkdir $(OutDir)
+	-mkdir $(OutDir)
+
+clean:
+#	rm -f -R $(OutDir)
+	-echo y | del $(OutDir)
+	-rd $(OutDir)
+
+distclean: clean
+#	rm -f config.log config.settings makefile
+	del config.log
+	del config.settings
+	del makefile
+
+dist:
+	mkdir dlgedit-$(VERSION)
+	cp $(DISTFILES) dlgedit-$(VERSION)
+	zip -9rq dlgedit-$(VERSION).zip dlgedit-$(VERSION)
+	rm -rf dlgedit-$(VERSION)
