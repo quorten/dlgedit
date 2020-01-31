@@ -1,5 +1,5 @@
 Dialog Editor README
-********************
+====================
 
 This dialog editor is a simple yet effective program to help you
 design dialogs that you need.  It is not meant to be a feature packed
@@ -13,7 +13,7 @@ Windows Platform SDK on dialogs before using this program.  That will
 greatly facilitate your programming capabilities.
 
 How to Use
-**********
+==========
 
 To add a new control to a dialog template you are editing, enter its
 dialog template code in the Text Window, then use the command "Add
@@ -38,7 +38,7 @@ functions to the program.  The source code is fairly modular and
 small, so this should not be a difficult task.
 
 Additional Notes
-****************
+================
 
 Note to WYSIWYG users: Dialog base units can often times refer to
 fractional pixel quantities, which means that unit rounding can cause
@@ -76,3 +76,14 @@ return MS Sans Serif when specified MS Shell Dlg, independent of the
 operating system version.  To make sure that you are designing your
 dialogs properly, you should manually set the font family to Tahoma
 when you are editing such dialogs for Windows XP.
+
+Copy Conditions
+===============
+
+The main source code is all in the Public Domain.
+
+See the file "UNLICENSE" in the top level directory for details.
+
+The Windows configuration script `configure.bat` came from GNU Emacs
+22.1 and is covered by the GNU General Public License, version 2 or
+later.  See the file `COPYING-CONF` for details.
