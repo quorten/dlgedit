@@ -12,6 +12,23 @@ You should make sure that you've read the relevant sections in the
 Windows Platform SDK on dialogs before using this program.  That will
 greatly facilitate your programming capabilities.
 
+Why?
+====
+
+Even though Windows compilers like MinGW32, Borland C++, and Microsoft
+Visual C++ Express edition are freely available, many of these come at
+the expense of excluding a Windows dialog editor.  This makes Windows
+software development very limited and difficult, unlike Macintosh
+Classic where ResEdit that was generally freely available.  On
+Windows, pretty much the only obvious choice for getting a dialog
+editor of any sort was Microsoft Visual C++ Professional/Enterprise,
+which costed quite a bit of money before they, and the entire Windows
+(GUI) platform, became obsolete around the year 2020 or so.
+
+Hence, I wrote this dialog editor to make the ability to author
+Windows native software available to everyone in the world... or at
+the very least, more convenient and accessible for myself.
+
 How to Use
 ==========
 
