@@ -12,6 +12,8 @@ You should make sure that you've read the relevant sections in the
 Windows Platform SDK on dialogs before using this program.  That will
 greatly facilitate your programming capabilities.
 
+For installation instructions, see the file `INSTALL.txt`.
+
 Why?
 ====
 
