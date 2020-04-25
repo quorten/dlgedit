@@ -34,7 +34,7 @@ guiflags = $(p1guiflags)
 cdebug = -Ox -MD # -GL
 linkdebug = -OPT:REF -OPT:ICF # -LTCG
 !else
-cdebug = -Od -D "_DEBUG" -D "_CRTDBG_MAP_ALLOC" -Fd"$(OutDir)/vc80.pdb" -Gm -MDd -ZI # -RTC1
+cdebug = -Od -D "_DEBUG" -D "_CRTDBG_MAP_ALLOC" -Fd"$(OutDir)/" -Gm -MDd -ZI # -RTC1
 linkdebug = -DEBUG -PDB:"$(OutDir)/$(TargetName).pdb"
 !endif
 

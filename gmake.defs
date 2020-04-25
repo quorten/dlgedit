@@ -8,11 +8,11 @@ OutName = dlgedit.exe
 EMPTY =
 SPACE = $(EMPTY) $(EMPTY)
 
-CC = gcc
+CC = $(CROSS)gcc
 CC_OUT = -o$(SPACE)
-LINK = gcc
+LINK = $(CROSS)gcc
 LINK_OUT = -o$(SPACE)
-RC = windres -O coff
+RC = $(CROSS)windres -O coff
 RC_OUT = -o$(SPACE)
 O = o
 
@@ -29,7 +29,7 @@ endif
 
 # Build flags for targets
 cflags = $(USER_CFLAGS) -c
-guiflags = $(USER_LDFLAGS)
+guiflags = $(USER_LDFLAGS) -static-libgcc
 
 ifdef NODEBUG
 cdebug = -O3

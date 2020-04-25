@@ -1,0 +1,9 @@
+# MSVC -*- makefile -*-
+# NODEBUG = 1
+# HAVE_MT = 1
+RMF = del
+RMRF = echo y | del
+RMRF2 = rmdir
+
+!include "nmake.defs"
+!include "Makefile.w32-in"

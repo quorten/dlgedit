@@ -12,7 +12,7 @@ You should make sure that you've read the relevant sections in the
 Windows Platform SDK on dialogs before using this program.  That will
 greatly facilitate your programming capabilities.
 
-For installation instructions, see the file `INSTALL.txt`.
+For installation instructions, see the file [INSTALL.md](INSTALL.md).
 
 Why?
 ====
@@ -45,16 +45,17 @@ arrow keys to move a control one dialog unit.
 
 The program has support for parsing and rendering all controls that
 are specified with a special statement within the dialog template.
-These controls are AUTO3STATE, STATE3, AUTOCHECKBOX, CHECKBOX,
-AUTORADIOBUTTON, RADIOBUTTON, EDITTEXT, LISTBOX, COMBOBOX, ICON,
-LTEXT, CTEXT, RTEXT, PUSHBOX, DEFPUSHBUTTON, PUSHBUTTON, GROUPBOX, and
-SCROLLBAR.  Note that each of these controls only has limited support
-for rendering in certain styles.  Other controls specified with
-"CONTROL" are only drawn as a gray box with the class name inside the
-box.  If you need to preview more types of controls, you can modify
-the program's source code to add the necessary parsers and rendering
-functions to the program.  The source code is fairly modular and
-small, so this should not be a difficult task.
+These controls are `AUTO3STATE`, `STATE3`, `AUTOCHECKBOX`, `CHECKBOX`,
+`AUTORADIOBUTTON`, `RADIOBUTTON`, `EDITTEXT`, `LISTBOX`, `COMBOBOX`,
+`ICON`, `LTEXT`, `CTEXT`, `RTEXT`, `PUSHBOX`, `DEFPUSHBUTTON`,
+`PUSHBUTTON`, `GROUPBOX`, and `SCROLLBAR`.  Note that each of these
+controls only has limited support for rendering in certain styles.
+Other controls specified with `CONTROL` are only drawn as a gray box
+with the class name inside the box.  If you need to preview more types
+of controls, you can modify the program's source code to add the
+necessary parsers and rendering functions to the program.  The source
+code is fairly modular and small, so this should not be a difficult
+task.
 
 Additional Notes
 ================
@@ -90,7 +91,7 @@ DS_SHELLFONT dialog style, and use the DIALOGEX resource instead of
 DIALOG.
 
 However, when this Dialog Editor loads a dialog template, it just uses
-a call to CreateFont() to get the font handle, which will always
+a call to `CreateFont()` to get the font handle, which will always
 return MS Sans Serif when specified MS Shell Dlg, independent of the
 operating system version.  To make sure that you are designing your
 dialogs properly, you should manually set the font family to Tahoma
@@ -102,7 +103,3 @@ Copy Conditions
 The main source code is all in the Public Domain.
 
 See the file "UNLICENSE" in the top level directory for details.
-
-The Windows configuration script `configure.bat` came from GNU Emacs
-22.1 and is covered by the GNU General Public License, version 2 or
-later.  See the file `COPYING-CONF` for details.

@@ -1,0 +1,10 @@
+# MinGW -*- makefile -*-
+# CROSS = i686-w64-mingw32-
+# NODEBUG = 1
+# NOCYGWIN = 1
+RMF = rm -f
+RMRF = rm -rf
+RMRF2 = echo rmdir
+
+include gmake.defs
+include Makefile.w32-in

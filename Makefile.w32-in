@@ -55,18 +55,17 @@ $(OutDir):
 	-mkdir $(OutDir)
 
 clean:
-#	rm -f -R $(OutDir)
-	-echo y | del $(OutDir)
-	-rd $(OutDir)
+	$(RMRF) $(OutDir)
+	$(RMRF2) $(OutDir)
 
 distclean: clean
-#	rm -f config.log config.settings makefile
-	del config.log
-	del config.settings
-	del makefile
+	$(RMF) config.log
+	$(RMF) config.settings
+	$(RMF) makefile
 
 dist:
 	mkdir dlgedit-$(VERSION)
 	cp $(DISTFILES) dlgedit-$(VERSION)
 	zip -9rq dlgedit-$(VERSION).zip dlgedit-$(VERSION)
-	rm -rf dlgedit-$(VERSION)
+	$(RMRF) dlgedit-$(VERSION)
+	$(RMRF2) dlgedit-$(VERSION)
